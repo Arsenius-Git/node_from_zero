@@ -9,6 +9,12 @@ app.get("/", (req, res)=>{
 app.get("/about", (req, res)=>{
   res.send("abt page!")
 })
+app.get("/time", (req, res) => {
+  setTimeout(() => {
+    res.send(new Date().toString())
+  }, 5000)
+})
+
 
 app.listen(3000, () => {console.log("app is running on 3000")})
 
