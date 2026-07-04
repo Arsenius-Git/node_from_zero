@@ -14,8 +14,17 @@ app.get("/time", (req, res) => {
     res.send(new Date().toString())
   }, 5000)
 })
-
-
+app.get("/hello", (req,res)=>{
+  res.send("Enter a username in url to see the profile")
+})
+app.get("/hello/:name", (req, res)=> {
+  console.log(req.params)
+  res.send(`Hello, ${req.params.name}`)
+})
+app.get("/hello/:first/:last", (req,res)=>{
+  console.log(req.params)
+  res.send(`${req.params.first, req.params.last}`)
+})
 app.listen(3000, () => {console.log("app is running on 3000")})
 
 
