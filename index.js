@@ -3,6 +3,9 @@ const path = require("path")
 
 const app = express()
 app.use(express.static("public"))
+app.use(express.json())
+
+
 app.get("/", (req, res)=>{
   res.sendFile(path.join(__dirname, "/page.html"))
 })
@@ -24,6 +27,12 @@ app.get("/hello/:name", (req, res)=> {
 app.get("/hello/:first/:last", (req,res)=>{
   console.log(req.params)
   res.send(`${req.params.first, req.params.last}`)
+})
+app.get("/json", (req,res)=>{
+  res.json({message:"hello", day:5})
+})
+app.post("/data", (req,res)=>{  
+  console.log(req.body)
 })
 app.listen(3000, () => {console.log("app is running on 3000")})
 
