@@ -1,7 +1,7 @@
-POST http://localhost:3000/data
+POST http://localhost:3000/data/
 Content-Type: application/json
 
 {
-  "name":"arseniy",
+  "to":"arseniy",
   "day":5
 }
