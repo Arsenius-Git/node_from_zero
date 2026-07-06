@@ -1,0 +1,8 @@
+Re-implemented  whole architecture that i worked on thorugh day 1-5, it includes:
+ - multiple endpoints GET
+ - a POST endpoint that returns json using app.use(express.json())
+ - setTimeout example that shows that node is async and handles pages simeoultaneously
+ - parameter example
+
+ /data endpoint request route: 
+ express checks if method and route name matches, sends json text gets parsed with express.json(),it gets  returned, it arrives as text, but express.json() parses it into an object, and now i can access req.body

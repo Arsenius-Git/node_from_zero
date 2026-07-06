@@ -22,6 +22,6 @@ app.get("/hello/:name", (req,res)=>{
 })
 app.post("/data/", (req,res)=>{
   console.log(req.body)
-  res.json({received: req.body})
+  res.json({received: req.body, greeting: req.body.to})
 })
 app.listen(3000, ()=>{console.log(`App runs on: ${"http://localhost:3000/"}`)})
