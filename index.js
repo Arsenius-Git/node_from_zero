@@ -3,6 +3,7 @@ const path = require("path")
 
 const app = express()
 
+let links = []
 app.use(express.static("public"))
 app.use(express.json())
 
@@ -23,5 +24,14 @@ app.get("/hello/:name", (req,res)=>{
 app.post("/data/", (req,res)=>{
   console.log(req.body)
   res.json({received: req.body, greeting: req.body.to})
+})
+
+app.post("/links", (req,res)=>{
+  links.push(req.body)
+  console.log(links)
+  res.json({received: req.body})
+})
+app.get("/links", (req, res)=>{
+  res.json(links)
 })
 app.listen(3000, ()=>{console.log(`App runs on: ${"http://localhost:3000/"}`)})
