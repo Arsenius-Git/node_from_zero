@@ -27,11 +27,21 @@ app.post("/data/", (req,res)=>{
 })
 
 app.post("/links", (req,res)=>{
-  links.push(req.body)
+  links.push({title: req.body.title, url:req.body.url,id:Date.now()})
   console.log(links)
-  res.json({received: req.body})
+  res.json({title: req.body.title, url:req.body.url,id:Date.now()})
 })
 app.get("/links", (req, res)=>{
   res.json(links)
+})
+app.get("/links/titles", (req,res)=>{
+  console.log(links)
+  res.json(links.map(links => links.title))
+})
+app.get("/links/:id", (req, res)=>{
+  res.json(links.find(links=>links.id == req.params.id))
+})
+app.get("/links/longer-than/:nameLength",(req,res)=>{
+  res.json(links.filter(links=>links.title.length > Number(req.params.nameLength)))
 })
 app.listen(3000, ()=>{console.log(`App runs on: ${"http://localhost:3000/"}`)})

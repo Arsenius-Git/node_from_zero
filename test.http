@@ -1,4 +1,4 @@
 POST http://localhost:3000/links
 Content-Type: application/json
 
-{ "title": "Anthropic", "url": "https://anthropic.com" }
+{ "title": "xAI", "url": "https://anthropic.com"}
