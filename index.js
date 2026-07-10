@@ -41,6 +41,15 @@ app.get("/links/titles", (req,res)=>{
 app.get("/links/:id", (req, res)=>{
   res.json(links.find(links=>links.id == req.params.id))
 })
+app.delete("/links/:id", (req, res)=>{
+  const link = links.find(l => l.id == req.params.id)
+  if (!link){
+    return res.json({response: "no element with that id exists"})
+  }
+  
+  console.log(links.find(links=>links.id == req.params.id))
+  res.json(links = links.filter(links=>links.id != req.params.id))
+})
 app.get("/links/longer-than/:nameLength",(req,res)=>{
   res.json(links.filter(links=>links.title.length > Number(req.params.nameLength)))
 })
