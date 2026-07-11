@@ -27,9 +27,13 @@ app.post("/data/", (req,res)=>{
 })
 
 app.post("/links", (req,res)=>{
-  links.push({title: req.body.title, url:req.body.url,id:Date.now()})
+  if (!req.body.title || !req.body.url){
+    return res.status(400).json({error: "cannot accept empty request"})
+  }
+  const link = {title: req.body.title, url:req.body.url,id:Date.now()}
+  links.push(link)
   console.log(links)
-  res.json({title: req.body.title, url:req.body.url,id:Date.now()})
+  res.json(link)
 })
 app.get("/links", (req, res)=>{
   res.json(links)
